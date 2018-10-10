@@ -1,0 +1,146 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.jt</groupId>
+  <artifactId>springboot2</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>springboot2 Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  
+   <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+		<relativePath />
+  </parent>
+
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+  </properties>
+  <dependencies>
+    <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+		<exclusion>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</exclusion>
+	</exclusions>	
+	</dependency>
+	
+	<!--servlet依赖 -->
+		<dependency>
+    		<groupId>javax.servlet</groupId>
+   			<artifactId>javax.servlet-api</artifactId>
+    		<version>3.1.0</version>
+    		<scope>provided</scope>
+		</dependency>
+
+		<!--jstl依赖 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!--使jsp页面生效 -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- 热部署 -->
+     <dependency>
+     	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-devtools</artifactId>
+    	<optional>true</optional>
+    	<scope>true</scope>
+	 </dependency>
+	 
+	 <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- mycat依赖 -->
+    <dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-amqp</artifactId>
+	</dependency>
+    
+     <!--redis缓存相关支持-->
+        <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-redis</artifactId>
+           <version>1.4.5.RELEASE</version>
+    	</dependency>
+    	<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        
+       <dependency> <!-- 查询相关jar包 -->
+	<groupId>org.apache.lucene</groupId>
+	<artifactId>lucene-queryparser</artifactId>
+	<version>6.6.0</version>
+</dependency>
+<dependency> <!-- lucene自带只能中文分词器jar包 -->
+	<groupId>org.apache.lucene</groupId>
+	<artifactId>lucene-analyzers-smartcn</artifactId>
+	<version>6.6.0</version>
+</dependency>
+<dependency> <!-- 测试用到的lucene工具包 -->
+	<groupId>org.apache.lucene</groupId>
+	<artifactId>lucene-analyzers-common</artifactId>
+	<version>6.6.0</version>
+</dependency>
+<dependency> <!-- 测试用到的lucene核心包 -->
+	<groupId>org.apache.lucene</groupId>
+	<artifactId>lucene-core</artifactId>
+	<version>6.6.0</version>
+</dependency>
+<!-- elasticsearch依赖 -->
+
+
+<dependency>
+  <groupId>org.elasticsearch</groupId>
+  <artifactId>elasticsearch</artifactId>
+  <version>5.5.2</version>
+</dependency>
+<dependency>
+	<groupId>org.elasticsearch.client</groupId>
+	<artifactId>transport</artifactId>
+	<version>5.5.2</version>
+</dependency>
+
+
+  </dependencies>
+
+  <build>
+    <finalName>springboot2</finalName>
+    
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <!-- 没有该配置，devtools 不生效 -->
+                <fork>true</fork>
+            </configuration>
+        </plugin>
+        <!-- 发布打包插件 -->
+        <plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+    </plugins>
+  </build>
+</project>
